@@ -93,3 +93,124 @@ def build_vectorstore():
 @st.cache_resource(show_spinner=False)
 def get_llm():
     return ChatGroq(model="openai/gpt-oss-120b", temperature=0.4)
+def is_arabic(text):
+    return bool(re.search(r"[\u0600-\u06FF]", text))
+
+
+def get_response(query, vs, llm, category):
+    results = vs.similarity_search_with_score(query, k=2)
+    context = ""
+    if results and results[0][1] < 0.8:
+        for doc, _ in results:
+            context += f"Local Info: {doc.metadata['answer_en']}\n"
+    else:
+        try:
+            with DDGS() as ddgs:
+                for r in ddgs.text(f"tech specs {query}", max_results=2):
+                    context += f"Web Info: {r['body']}\n"
+        except Exception:
+            context += "No external info found.\n"
+
+    prompt = f"""You are TechBot, a professional tech expert. Topic: {category}.
+Answer in the SAME language the user used (Arabic or English).
+
+Rules:
+- If the user mentions a budget or price, ONLY recommend options within that budget (5-10% margin is OK). Never exceed it. If nothing fits, say so honestly and suggest the closest option.
+- Do NOT use tables. Use short paragraphs and simple bullet points only.
+- Keep model names and specs in English, but write the explanation in the user's language.
+- Be concise: 2-3 options max, each with key specs, approximate price, and who it's best for.
+
+Context:
+{context}
+
+User: {query}
+TechBot:"""
+    text = llm.invoke(prompt).content
+    if isinstance(text, list):
+        text = " ".join(t.get("text", "") if isinstance(t, dict) else str(t) for t in text)
+    return text
+
+
+def render(content):
+    if is_arabic(content):
+        st.markdown(f"<div class='rtl'>\n\n{content}\n\n</div>", unsafe_allow_html=True)
+    else:
+        st.markdown(content)
+
+
+if "page" not in st.session_state:
+    st.session_state.page = "home"
+if "category" not in st.session_state:
+    st.session_state.category = "Home"
+if "messages" not in st.session_state:
+    st.session_state.messages = [{"role": "assistant", "content": WELCOME}]
+
+
+# ================= صفحة الترحيب =================
+if st.session_state.page == "home":
+    st.markdown(
+        '<div class="logo-bar"><span class="ic">🤖</span>TechBot</div>'
+        '<h1 class="hero-title">Your <span>Smart Tech</span> Shopping Assistant</h1>'
+        '<p class="hero-sub">Tell us what you need, and our AI chatbot will find the perfect device for you.</p>'
+        '<div class="mascot-wrap"><div class="mascot">🤖</div>'
+        '<span class="fl a">💻</span><span class="fl b">📱</span><span class="fl c">🎧</span>'
+        '<span class="fl d">🎮</span><span class="fl e">📷</span><span class="fl f">⌚</span></div>',
+        unsafe_allow_html=True,
+    )
+    if st.button("💬  Chat Now", key="chat_now", type="primary"):
+        st.session_state.page = "chat"
+        st.rerun()
+    st.markdown(
+        '<div class="features">'
+        '<div class="feat"><div class="i">🎯</div><div class="t">Personalized</div><div class="d">Picks made for you</div></div>'
+        '<div class="feat"><div class="i">💰</div><div class="t">Budget Friendly</div><div class="d">Respects your price</div></div>'
+        '<div class="feat"><div class="i">⚡</div><div class="t">Instant Answers</div><div class="d">Fast and smart</div></div>'
+        '<div class="feat"><div class="i">🌍</div><div class="t">Arabic & English</div><div class="d">Ask in any language</div></div>'
+        '</div>',
+        unsafe_allow_html=True,
+    )
+
+# ================= صفحة الشات =================
+else:
+    st.markdown(
+        '<div class="chat-header"><div class="av">🤖</div>'
+        '<div><div class="nm">TechBot</div><div class="st">● Online</div></div></div>',
+        unsafe_allow_html=True,
+    )
+
+    cols = st.columns(3)
+    for col, cat in zip(cols * 2, CATEGORIES):
+        pass
+    for row in (CATEGORIES[:3], CATEGORIES[3:]):
+        cols = st.columns(3)
+        for col, cat in zip(cols, row):
+            if col.button(f"{ICONS[cat]} {cat}", key=f"btn_{cat}",
+                          type="primary" if st.session_state.category == cat else "secondary"):
+                st.session_state.category = cat
+                st.rerun()
+
+    c1, c2 = st.columns(2)
+    if c1.button("⬅️ Back", key="back"):
+        st.session_state.page = "home"
+        st.rerun()
+    if c2.button("🗑️ Clear chat", key="clear"):
+        st.session_state.messages = [{"role": "assistant", "content": WELCOME}]
+        st.rerun()
+
+    for m in st.session_state.messages:
+        with st.chat_message(m["role"], avatar="🤖" if m["role"] == "assistant" else None):
+            render(m["content"])
+
+    if prompt := st.chat_input("Type your message..."):
+        st.session_state.messages.append({"role": "user", "content": prompt})
+        with st.chat_message("user"):
+            render(prompt)
+        with st.chat_message("assistant", avatar="🤖"):
+            with st.spinner("TechBot is typing..."):
+                try:
+                    answer = get_response(prompt, build_vectorstore(), get_llm(),
+                                          st.session_state.category)
+                except Exception as e:
+                    answer = f"حصل خطأ: {e}"
+            render(answer)
+        st.session_state.messages.append({"role": "assistant", "content": answer})
