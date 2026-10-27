@@ -1,5 +1,6 @@
 import os
 import json
+import re
 import streamlit as st
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
@@ -7,18 +8,23 @@ from langchain_core.documents import Document
 from langchain_groq import ChatGroq
 from duckduckgo_search import DDGS
 
-st.set_page_config(page_title="TechBot", page_icon="🤖", layout="wide")
+st.set_page_config(page_title="TechBot", page_icon="🤖", layout="centered",
+                   initial_sidebar_state="collapsed")
 os.environ["GROQ_API_KEY"] = st.secrets["GROQ_API_KEY"]
 
 st.markdown("""
 <style>
     .stApp { background: #f9fafb; }
-    [data-testid="stSidebar"] { background: #1e1e2f; }
-    [data-testid="stSidebar"] * { color: #fff !important; }
-    [data-testid="stSidebar"] .stRadio label { padding: 8px 12px; border-radius: 8px; }
     [data-testid="stChatMessage"] { border-radius: 14px; padding: 12px; margin-bottom: 8px; }
+    .stButton>button { width: 100%; border-radius: 10px; }
+    .rtl { direction: rtl; text-align: right; }
 </style>
 """, unsafe_allow_html=True)
+
+CATEGORIES = ["Home", "Laptops", "Phones", "Cameras", "Hardware", "Software"]
+ICONS = {"Home": "🏠", "Laptops": "💻", "Phones": "📱",
+         "Cameras": "📷", "Hardware": "🛠️", "Software": "</>"}
+
 
 @st.cache_resource(show_spinner=False)
 def build_vectorstore():
@@ -27,16 +33,23 @@ def build_vectorstore():
     docs = [
         Document(
             page_content=f"Question: {i['question_en']}\n{i['question_ar']}",
-            metadata={"answer_en": i["answer_en"], "answer_ar": i["answer_ar"], "category": i.get("category", "")},
+            metadata={"answer_en": i["answer_en"], "answer_ar": i["answer_ar"],
+                      "category": i.get("category", "")},
         )
         for i in data
     ]
     emb = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
     return Chroma.from_documents(documents=docs, embedding=emb)
 
+
 @st.cache_resource(show_spinner=False)
 def get_llm():
     return ChatGroq(model="openai/gpt-oss-120b", temperature=0.4)
+
+
+def is_arabic(text):
+    return bool(re.search(r"[\u0600-\u06FF]", text))
+
 
 def get_response(query, vs, llm, category):
     results = vs.similarity_search_with_score(query, k=2)
@@ -55,6 +68,12 @@ def get_response(query, vs, llm, category):
     prompt = f"""You are TechBot, a professional tech expert. Topic: {category}.
 Answer in the SAME language the user used (Arabic or English).
 
+Rules:
+- If the user mentions a budget or price, ONLY recommend options within that budget (a small margin of 5-10% is OK). Never exceed it. If nothing fits, say so honestly and suggest the closest option.
+- Do NOT use tables. Use short paragraphs and simple bullet points only.
+- Keep model names and specs in English, but write the explanation in the user's language.
+- Be concise: suggest 2-3 options max, each with key specs, approximate price, and who it's best for.
+
 Context:
 {context}
 
@@ -65,28 +84,49 @@ TechBot:"""
         text = " ".join(t.get("text", "") if isinstance(t, dict) else str(t) for t in text)
     return text
 
-# الشريط الجانبي
-with st.sidebar:
-    st.title("🤖 TechBot")
-    category = st.radio("القسم", ["Home", "Laptops", "Phones", "Cameras", "Hardware", "Software"], label_visibility="collapsed")
 
-# الشات
+def render(content):
+    if is_arabic(content):
+        st.markdown(f"<div class='rtl'>\n\n{content}\n\n</div>", unsafe_allow_html=True)
+    else:
+        st.markdown(content)
+
+
+# ---------- الأقسام (أزرار أفقية) ----------
+if "category" not in st.session_state:
+    st.session_state.category = "Home"
+
+st.title("🤖 TechBot")
+for row in (CATEGORIES[:3], CATEGORIES[3:]):
+    cols = st.columns(3)
+    for col, cat in zip(cols, row):
+        label = f"{ICONS[cat]} {cat}"
+        if col.button(label, key=f"btn_{cat}",
+                      type="primary" if st.session_state.category == cat else "secondary"):
+            st.session_state.category = cat
+            st.rerun()
+
+category = st.session_state.category
+
+# ---------- الشات ----------
 if "messages" not in st.session_state:
-    st.session_state.messages = [{"role": "assistant", "content": "Hi! I'm TechBot 👋 What are you looking for today?"}]
+    st.session_state.messages = [
+        {"role": "assistant", "content": "Hi! I'm TechBot 👋 What are you looking for today?"}
+    ]
 
 for m in st.session_state.messages:
     with st.chat_message(m["role"]):
-        st.markdown(m["content"])
+        render(m["content"])
 
 if prompt := st.chat_input("Type your message..."):
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
-        st.markdown(prompt)
+        render(prompt)
     with st.chat_message("assistant"):
         with st.spinner("TechBot is typing..."):
             try:
                 answer = get_response(prompt, build_vectorstore(), get_llm(), category)
             except Exception as e:
                 answer = f"حصل خطأ: {e}"
-        st.markdown(answer)
+        render(answer)
     st.session_state.messages.append({"role": "assistant", "content": answer})
