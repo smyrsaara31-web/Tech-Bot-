@@ -21,12 +21,12 @@ html, body, .stApp { font-family: 'Poppins', sans-serif; }
 header[data-testid="stHeader"] { background: transparent; }
 .block-container { padding-top: 1.5rem; max-width: 760px; }
 
-/* الأزرار */
 .stButton > button {
     width: 100%; border-radius: 12px; border: 1px solid #f9a8d4;
     background: #fff; color: #be185d; font-weight: 600; padding: 8px 4px;
 }
-.stButton > button[kind="primary"], .stButton > button[data-testid="stBaseButton-primary"] {
+.stButton > button[kind="primary"], .stButton > button[data-testid="stBaseButton-primary"],
+[data-testid="stFormSubmitButton"] > button {
     background: linear-gradient(90deg, #ec4899, #8b5cf6); color: #fff; border: none;
     box-shadow: 0 6px 16px rgba(236,72,153,.35);
 }
@@ -35,7 +35,6 @@ div[data-testid="stHorizontalBlock"] { flex-wrap: wrap; flex-direction: row !imp
 .st-key-chat_now { display: flex; justify-content: center; }
 .st-key-chat_now button { width: auto; padding: 14px 44px; font-size: 18px; border-radius: 40px; }
 
-/* صفحة الترحيب */
 .logo-bar { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 22px; color: #1e1b3a; }
 .logo-bar .ic { background: linear-gradient(135deg,#ec4899,#8b5cf6); border-radius: 12px; padding: 4px 8px; }
 .hero-title { font-size: 40px; font-weight: 700; line-height: 1.2; color: #1e1b3a; margin: 24px 0 8px; text-align: center; }
@@ -55,7 +54,6 @@ div[data-testid="stHorizontalBlock"] { flex-wrap: wrap; flex-direction: row !imp
 .feat .i { font-size: 26px; } .feat .t { font-size: 13px; font-weight: 600; color: #1e1b3a; margin-top: 4px; }
 .feat .d { font-size: 11px; color: #64748b; }
 
-/* صفحة الشات */
 .chat-header { display: flex; align-items: center; gap: 12px; background: #1e1b3a; color: #fff; padding: 12px 16px; border-radius: 16px; margin-bottom: 12px; }
 .chat-header .av { background: linear-gradient(135deg,#ec4899,#8b5cf6); width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; }
 .chat-header .nm { font-weight: 700; font-size: 18px; }
@@ -63,7 +61,7 @@ div[data-testid="stHorizontalBlock"] { flex-wrap: wrap; flex-direction: row !imp
 [data-testid="stChatMessage"] { background: #fff; border-radius: 16px; padding: 12px; margin-bottom: 8px; box-shadow: 0 2px 10px rgba(139,92,246,.10); }
 [data-testid="stChatMessage"]:has([data-testid="stChatMessageAvatarUser"]) { background: linear-gradient(90deg, #ec4899, #8b5cf6); }
 [data-testid="stChatMessage"]:has([data-testid="stChatMessageAvatarUser"]) * { color: #fff !important; }
-[data-testid="stChatInput"] { border: 2px solid #ec4899; border-radius: 16px; }
+[data-testid="stForm"] { border: 2px solid #ec4899; border-radius: 16px; background: rgba(255,255,255,.7); }
 .rtl { direction: rtl; text-align: right; }
 </style>
 """, unsafe_allow_html=True)
@@ -71,7 +69,6 @@ div[data-testid="stHorizontalBlock"] { flex-wrap: wrap; flex-direction: row !imp
 CATEGORIES = ["Home", "Laptops", "Phones", "Cameras", "Hardware", "Software"]
 ICONS = {"Home": "🏠", "Laptops": "💻", "Phones": "📱",
          "Cameras": "📷", "Hardware": "🛠️", "Software": "💾"}
-WELCOME = "Hi! I'm TechBot 👋 What are you looking for today?"
 
 
 @st.cache_resource(show_spinner=False)
@@ -93,6 +90,8 @@ def build_vectorstore():
 @st.cache_resource(show_spinner=False)
 def get_llm():
     return ChatGroq(model="openai/gpt-oss-120b", temperature=0.4)
+
+
 def is_arabic(text):
     return bool(re.search(r"[\u0600-\u06FF]", text))
 
@@ -111,7 +110,8 @@ def get_response(query, vs, llm, category):
         except Exception:
             context += "No external info found.\n"
 
-    prompt = f"""You are TechBot, a professional tech expert. Topic: {category}.
+    prompt = f"""You are TechBot, a professional tech expert specialized ONLY in the category "{category}" (if the category is "Home", answer about any tech topic).
+If the user asks about a different category, do not answer it. Politely tell them in their own language to switch to the right section from the buttons above, and mention which section fits their question.
 Answer in the SAME language the user used (Arabic or English).
 
 Rules:
@@ -142,8 +142,10 @@ if "page" not in st.session_state:
     st.session_state.page = "home"
 if "category" not in st.session_state:
     st.session_state.category = "Home"
-if "messages" not in st.session_state:
-    st.session_state.messages = [{"role": "assistant", "content": WELCOME}]
+if "answer" not in st.session_state:
+    st.session_state.answer = None
+if "last_q" not in st.session_state:
+    st.session_state.last_q = None
 
 
 # ================= صفحة الترحيب =================
@@ -178,39 +180,47 @@ else:
         unsafe_allow_html=True,
     )
 
-    cols = st.columns(3)
-    for col, cat in zip(cols * 2, CATEGORIES):
-        pass
     for row in (CATEGORIES[:3], CATEGORIES[3:]):
         cols = st.columns(3)
         for col, cat in zip(cols, row):
             if col.button(f"{ICONS[cat]} {cat}", key=f"btn_{cat}",
                           type="primary" if st.session_state.category == cat else "secondary"):
                 st.session_state.category = cat
+                st.session_state.answer = None
+                st.session_state.last_q = None
                 st.rerun()
 
     c1, c2 = st.columns(2)
     if c1.button("⬅️ Back", key="back"):
         st.session_state.page = "home"
+        st.session_state.answer = None
+        st.session_state.last_q = None
         st.rerun()
     if c2.button("🗑️ Clear chat", key="clear"):
-        st.session_state.messages = [{"role": "assistant", "content": WELCOME}]
+        st.session_state.answer = None
+        st.session_state.last_q = None
         st.rerun()
 
-    for m in st.session_state.messages:
-        with st.chat_message(m["role"], avatar="🤖" if m["role"] == "assistant" else None):
-            render(m["content"])
+    st.markdown("<div style='height:50px'></div>", unsafe_allow_html=True)
+    st.markdown("<h3 style='text-align:center;color:#1e1b3a'>اسأل TechBot عن أي حاجة 👇</h3>",
+                unsafe_allow_html=True)
 
-    if prompt := st.chat_input("Type your message..."):
-        st.session_state.messages.append({"role": "user", "content": prompt})
+    with st.form("ask_form", clear_on_submit=True):
+        q = st.text_input("سؤالك", placeholder="Type your message...",
+                          label_visibility="collapsed")
+        sent = st.form_submit_button("🚀 Send")
+
+    if sent and q.strip():
+        st.session_state.last_q = q.strip()
+        with st.spinner("TechBot is typing..."):
+            try:
+                st.session_state.answer = get_response(
+                    q.strip(), build_vectorstore(), get_llm(), st.session_state.category)
+            except Exception as e:
+                st.session_state.answer = f"حصل خطأ: {e}"
+
+    if st.session_state.answer:
         with st.chat_message("user"):
-            render(prompt)
+            render(st.session_state.last_q)
         with st.chat_message("assistant", avatar="🤖"):
-            with st.spinner("TechBot is typing..."):
-                try:
-                    answer = get_response(prompt, build_vectorstore(), get_llm(),
-                                          st.session_state.category)
-                except Exception as e:
-                    answer = f"حصل خطأ: {e}"
-            render(answer)
-        st.session_state.messages.append({"role": "assistant", "content": answer})
+            render(st.session_state.answer)
