@@ -5,3 +5,4 @@ langchain-core
 langchain-groq
 chromadb
 sentence-transformers
+duckduckgo-search
