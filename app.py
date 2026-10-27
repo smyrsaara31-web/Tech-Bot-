@@ -2,6 +2,11 @@ import os
 import json
 import streamlit as st
 import streamlit.components.v1 as components
+from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_chroma import Chroma
+from langchain_core.documents import Document
+from langchain_groq import ChatGroq
+from duckduckgo_search import DDGS
 
 # ==========================================
 # 1. إعدادات الصفحة (إخفاء عناصر Streamlit)
@@ -19,15 +24,67 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ==========================================
-# 2. دالة الرد (تجريبية لغاية ما نربطها)
+# 2. إعداد الذكاء الاصطناعي (Groq + LangChain)
 # ==========================================
-def fake_bot_response(query):
-    # دلوقتي بنرد رد ثابت عشان نتأكد إن الشكل شغال
-    # بعدين هنربطها بـ Groq
-    return f"This is a reply to: '{query}'. The full AI logic will be connected soon!"
+os.environ["GROQ_API_KEY"] = st.secrets["GROQ_API_KEY"]
+
+@st.cache_resource(show_spinner=False)
+def build_vectorstore():
+    with open("data.json", "r", encoding="utf-8") as f:
+        data = json.load(f)
+    documents = []
+    for item in data:
+        content = f"Question: {item['question_en']}\n{item['question_ar']}"
+        metadata = {"answer_en": item["answer_en"], "answer_ar": item["answer_ar"]}
+        documents.append(Document(page_content=content, metadata=metadata))
+    embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+    return Chroma.from_documents(documents=documents, embedding=embedding_model)
+
+@st.cache_resource(show_spinner=False)
+def get_llm():
+    return ChatGroq(model="openai/gpt-oss-120b", temperature=0.4)
+
+def get_response(query, vectorstore, llm):
+    try:
+        safe_query = query.encode('utf-8').decode('utf-8')
+    except:
+        safe_query = str(query)
+
+    results = vectorstore.similarity_search_with_score(safe_query, k=2)
+    context = ""
+    if results and results[0][1] < 0.8:
+        for doc, score in results:
+            context += f"Local Info: {doc.metadata['answer_en']}\n"
+    else:
+        try:
+            with DDGS() as ddgs:
+                web_results = list(ddgs.text(f"tech specs {safe_query}", max_results=2))
+                for r in web_results:
+                    context += f"Web Info: {r['body']}\n"
+        except Exception:
+            context += "No external info found.\n"
+
+    prompt = f"""You are TechBot, a professional tech expert.
+Answer in the SAME language the user used (Arabic or English).
+Be helpful, concise, and use bullet points if listing specs.
+
+Context:
+{context}
+
+User: {safe_query}
+TechBot:"""
+    
+    try:
+        response = llm.invoke(prompt)
+        text = response.content
+        if isinstance(text, list):
+            text = " ".join([t.get("text", "") if isinstance(t, dict) else str(t) for t in text])
+        return text
+    except Exception as e:
+        return f"Error: {e}"
 
 # ==========================================
-# 3. الواجهة (HTML + CSS + JS)
+# 3. الواجهة (HTML + CSS)
 # ==========================================
 html_code = """
 <!DOCTYPE html>
@@ -156,7 +213,7 @@ html_code = """
         input.value = '';
         typing.style.display = 'block';
 
-        // هنا بنبعت السؤال لـ Streamlit
+        // إرسال السؤال لـ Streamlit
         window.parent.postMessage({
             isStreamlitMessage: true,
             type: "streamlit:setComponentValue",
@@ -182,16 +239,25 @@ html_code = """
 """
 
 # ==========================================
-# 4. ربط الواجهة بالبايثون (عشان الرد يشتغل)
+# 4. الربط (عشان الرد يشتغل)
 # ==========================================
+# هنا بنعرض الواجهة
 component_value = components.html(html_code, height=850, scrolling=False)
 
 if component_value:
-    # هنا بنستقبل السؤال ونبعت الرد
-    response = fake_bot_response(component_value)
-    
-    # تنظيف الرد عشان ميكسرش الـ JS
-    safe_response = response.replace("`", "'").replace("$", "\\$")
-    
-    # إرسال الرد للواجهة
-    components.html(f"<script>window.parent.receiveResponse(`{safe_response}`);</script>", height=0)
+    try:
+        # بناء الداتا والـ LLM
+        vs = build_vectorstore()
+        llm = get_llm()
+        
+        # استقبال الإجابة
+        answer = get_response(component_value, vs, llm)
+        
+        # تنظيف الرد من أي حاجة تكسر الـ JS
+        safe_answer = answer.replace("`", "'").replace("$", "\\$")
+        
+        # إرسال الرد
+        components.html(f"<script>window.parent.receiveResponse(`{safe_answer}`);</script>", height=0)
+    except Exception as e:
+        # لو حصل خطأ، نبعته للواجهة
+        components.html(f"<script>window.parent.receiveResponse(`Error: {str(e)}`);</script>", height=0)
