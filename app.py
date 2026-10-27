@@ -7,57 +7,47 @@ from langchain_core.documents import Document
 from langchain_groq import ChatGroq
 from duckduckgo_search import DDGS
 
-# ==========================================
-# 1. إعدادات الصفحة والواجهة
-# ==========================================
-st.set_page_config(page_title="TechBot | Smart Assistant", page_icon="🤖", layout="wide")
+# 1. إعدادات الصفحة
+st.set_page_config(page_title="TechBot", page_icon="🤖", layout="centered")
 
-# تصميم CSS يحاكي الواجهة اللي عملناها
+# 2. تصميم CSS بسيط وأنيق (زي ChatGPT)
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-    
+    /* الخلفية العامة */
     .stApp {
-        background: #f8f9fa;
-        font-family: 'Poppins', sans-serif;
+        background-color: #0f172a;
     }
-    
-    /* إخفاء عناصر Streamlit */
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
-    header {visibility: hidden;}
-    
-    /* تنسيق الشريط الجانبي */
+    /* الشريط الجانبي */
     [data-testid="stSidebar"] {
-        background-color: #1e1e2f !important;
-        color: white;
+        background-color: #1e293b !important;
     }
-    [data-testid="stSidebar"] h1, [data-testid="stSidebar"] h2, [data-testid="stSidebar"] p {
-        color: white !important;
+    [data-testid="stSidebar"] h1, [data-testid="stSidebar"] h2, [data-testid="stSidebar"] h3, [data-testid="stSidebar"] p {
+        color: #e2e8f0 !important;
     }
-    
-    /* تنسيق رسائل الشات */
+    /* رسائل الشات */
     [data-testid="stChatMessage"] {
-        background-color: white !important;
+        background-color: #1e293b !important;
         border-radius: 15px;
-        padding: 15px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        margin-bottom: 10px;
+        border: 1px solid #334155;
     }
-    
+    /* النصوص */
+    p, h1, h2, h3, li, span {
+        color: #f8fafc !important;
+    }
     /* مربع الكتابة */
     .stChatInput textarea {
-        border-radius: 20px !important;
-        border: 2px solid #6C5CE7 !important;
+        background-color: #1e293b !important;
+        color: white !important;
+        border: 1px solid #6C5CE7 !important;
+        border-radius: 15px !important;
     }
 </style>
 """, unsafe_allow_html=True)
 
-# ==========================================
-# 2. المفتاح والداتا
-# ==========================================
+# 3. المفتاح
 os.environ["GROQ_API_KEY"] = st.secrets["GROQ_API_KEY"]
 
+# 4. تحميل الداتا
 @st.cache_resource(show_spinner=False)
 def build_vectorstore():
     with open("data.json", "r", encoding="utf-8") as f:
@@ -75,9 +65,7 @@ def build_vectorstore():
 def get_llm():
     return ChatGroq(model="openai/gpt-oss-120b", temperature=0.4)
 
-# ==========================================
-# 3. منطق الرد
-# ==========================================
+# 5. دالة الرد
 def get_response(query, vectorstore, llm):
     results = vectorstore.similarity_search_with_score(query, k=2)
     context = ""
@@ -112,47 +100,42 @@ TechBot:"""
     except Exception as e:
         return f"Error: {e}"
 
-# ==========================================
-# 4. واجهة الشات (Streamlit Native)
-# ==========================================
-st.title("🤖 TechBot")
-st.markdown("### Your Smart Tech Assistant")
-st.markdown("---")
-
-# إدارة الجلسات
-if "messages" not in st.session_state:
-    st.session_state.messages = [
-        {"role": "assistant", "content": "Hi! I'm TechBot 👋\n\nI'm here to help you find the best laptop, phone, or tech device. What are you looking for today?"}
-    ]
-
-# الشريط الجانبي
+# 6. الشريط الجانبي
 with st.sidebar:
-    st.image("https://cdn-icons-png.flaticon.com/512/4712/4712109.png", width=80)
-    st.markdown("## 🤖 TechBot")
+    st.title("🤖 TechBot")
     st.markdown("### Categories")
-    st.markdown("- 💻 Laptops\n- 📱 Phones\n- 📷 Cameras\n- 🛠️ Hardware\n- 💻 Software")
+    st.markdown("- 💻 Laptops")
+    st.markdown("- 📱 Phones")
+    st.markdown("- 📷 Cameras")
+    st.markdown("- 🛠️ Hardware")
+    st.markdown("- 💻 Software")
     st.markdown("---")
     if st.button("🗑️ Clear Chat"):
         st.session_state.messages = [
-            {"role": "assistant", "content": "Hi! I'm TechBot 👋\n\nHow can I help you today?"}
+            {"role": "assistant", "content": "Hi! I'm TechBot 👋 How can I help you today?"}
         ]
         st.rerun()
 
-# عرض الرسائل
+# 7. واجهة الشات
+st.title("🤖 TechBot")
+st.caption("Your Smart Tech Assistant")
+
+if "messages" not in st.session_state:
+    st.session_state.messages = [
+        {"role": "assistant", "content": "Hi! I'm TechBot 👋\n\nI can help you with laptops, phones, software, and hardware. What do you need?"}
+    ]
+
 for msg in st.session_state.messages:
     with st.chat_message(msg["role"]):
         st.markdown(msg["content"])
 
-# إدخال سؤال جديد
-if prompt := st.chat_input("Type your message here..."):
-    # إضافة سؤال المستخدم
+if prompt := st.chat_input("Ask about any tech..."):
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.markdown(prompt)
 
-    # توليد الرد
     with st.chat_message("assistant"):
-        with st.spinner("TechBot is thinking..."):
+        with st.spinner("Thinking..."):
             vs = build_vectorstore()
             llm = get_llm()
             answer = get_response(prompt, vs, llm)
