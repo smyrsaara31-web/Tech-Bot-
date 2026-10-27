@@ -18,7 +18,7 @@ st.markdown("""
 html, body, .stApp { font-family: 'Poppins', sans-serif; }
 .stApp { background: linear-gradient(135deg, #fdf2f8 0%, #ede9fe 50%, #e0f2fe 100%); }
 #MainMenu, footer { visibility: hidden; }
-header[data-testid="stHeader"] { background: transparent; }
+header[data-testid="stHeader"] { bacckground: transparent; }
 .block-container { padding-top: 1.5rem; max-width: 760px; }
 
 .stButton > button {
@@ -202,8 +202,11 @@ else:
         st.rerun()
 
     st.markdown("<div style='height:50px'></div>", unsafe_allow_html=True)
-    st.markdown("<h3 style='text-align:center;color:#1e1b3a'>اسأل TechBot عن أي حاجة 👇</h3>",
-                unsafe_allow_html=True)
+    st.markdown(
+        "<h3 style='text-align:center;color:#1e1b3a;direction:rtl;unicode-bidi:plaintext'>"
+        "اسأل TechBot عن أي حاجة 👇</h3>",
+        unsafe_allow_html=True,
+    )
 
     with st.form("ask_form", clear_on_submit=True):
         q = st.text_input("سؤالك", placeholder="Type your message...",
