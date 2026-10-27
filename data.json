@@ -1,0 +1,142 @@
+[
+  {
+    "category": "hardware",
+    "question_en": "What is the difference between an SSD and an HDD?",
+    "question_ar": "إيه الفرق بين الـ SSD والـ HDD؟",
+    "answer_en": "An SSD (Solid State Drive) uses flash memory, has no moving parts, and is much faster, quieter, and more durable than an HDD (Hard Disk Drive). An HDD uses spinning disks and is cheaper per GB, making it better for bulk storage.",
+    "answer_ar": "الـ SSD (Solid State Drive) بيستخدم ذاكرة فلاش، ومفيهوش أجزاء متحركة، وده بيخليه أسرع بكتير وأهدى وأكثر متانة من الـ HDD (Hard Disk Drive). الـ HDD بيستخدم أقراص بتلف وده بيخليه أرخص في المساحة، فبيبقى أفضل لتخزين الملفات الكبيرة."
+  },
+  {
+    "category": "hardware",
+    "question_en": "What is RAM and why is it important?",
+    "question_ar": "إيه هي الرام (RAM) وليه هي مهمة؟",
+    "answer_en": "RAM (Random Access Memory) is the short-term memory of your computer. It temporarily stores data that the CPU needs to access quickly. More RAM means you can run more applications at the same time without slowing down.",
+    "answer_ar": "الرام (RAM) هي الذاكرة قصيرة المدى للكمبيوتر. بتخزن البيانات مؤقتًا عشان المعالج (CPU) يوصلها بسرعة. كل ما الرام تزيد، كل ما تقدري تفتحي برامج أكتر في نفس الوقت من غير ما الجهاز يعلق."
+  },
+  {
+    "category": "software",
+    "question_en": "What is the difference between Windows and macOS?",
+    "question_ar": "إيه الفرق بين ويندوز (Windows) وماك (macOS)؟",
+    "answer_en": "Windows is used on a wide variety of hardware and is great for gaming and compatibility. macOS is exclusive to Apple devices, known for its stability, integration with the Apple ecosystem, and user-friendly interface, making it great for creative work.",
+    "answer_ar": "ويندوز بيشتغل على أجهزة كتير مختلفة وممتاز في الألعاب والتوافق مع البرامج. ماك (macOS) مخصص لأجهزة آبل بس، ومعروف بثباته وتكامله مع أجهزة آبل وبساطة واجهته، وده بيخليه ممتاز للشغل الإبداعي."
+  },
+  {
+    "category": "hardware",
+    "question_en": "What is a GPU and do I need a dedicated one?",
+    "question_ar": "إيه هي كارت الشاشة (GPU) وهل أحتاج واحد مخصص؟",
+    "answer_en": "A GPU (Graphics Processing Unit) handles rendering images and video. You need a dedicated GPU if you play modern games, do video editing, 3D rendering, or train AI models. For basic tasks, an integrated GPU is enough.",
+    "answer_ar": "كارت الشاشة (GPU) هو المسؤول عن معالجة الصور والفيديو. إنتِ محتاجة كارت شاشة مخصص لو بتلعبي ألعاب حديثة، أو بتعملي مونتاج فيديو، أو تصميم 3D، أو تدريبي موديلات ذكاء اصطناعي. لكن للمهام البسيطة، كارت الشاشة المدمج كفاية."
+  },
+  {
+    "category": "software",
+    "question_en": "How can I speed up my slow computer?",
+    "question_ar": "إزاي أسرّع الكمبيوتر البطيء بتاعي؟",
+    "answer_en": "Try these steps: 1) Uninstall unused programs. 2) Upgrade to an SSD if you haven't. 3) Increase your RAM. 4) Clean temporary files. 5) Disable startup programs. 6) Check for malware.",
+    "answer_ar": "جربي الخطوات دي: 1) امسحي البرامج اللي مش بتستخدميها. 2) ركبي هارد SSD لو لسه عندك HDD. 3) زودي الرام. 4) امسحي الملفات المؤقتة. 5) وقفي البرامج اللي بتفتح مع التشغيل. 6) اعملي فحص للفيروسات."
+  },
+  {
+    "category": "hardware",
+    "question_en": "What is the difference between Intel Core i5 and i7?",
+    "question_ar": "إيه الفرق بين معالج Intel Core i5 و i7؟",
+    "answer_en": "An i7 generally has more cores/threads and higher cache than an i5, making it better for heavy multitasking, gaming, and professional software. An i5 is enough for everyday tasks and moderate gaming.",
+    "answer_ar": "معالج i7 بيبقى فيه أنوية (cores) وخيوط (threads) وكاش أكبر من الـ i5، وده بيخليه أفضل في المهام الثقيلة والألعاب والبرامج الاحترافية. أما i5 فكفاية للمهام اليومية والألعاب المتوسطة."
+  },
+  {
+    "category": "software",
+    "question_en": "What is a virtual machine (VM)?",
+    "question_ar": "إيه هي الآلة الافتراضية (VM)؟",
+    "answer_en": "A Virtual Machine is a software emulation of a physical computer. It runs an operating system (like Windows or Linux) inside a window on your main OS. It's useful for testing, running different OSs, or isolating software.",
+    "answer_ar": "الآلة الافتراضية (VM) هي نظام كمبيوتر وهمي بيشتغل كبرنامج. بتقدر تشغلي نظام تشغيل كامل (زي ويندوز أو لينكس) جوة نافذة على النظام الأساسي بتاعك. مفيدة للتجارب، أو تشغيل أنظمة تانية، أو عزل البرامج المشبوهة."
+  },
+  {
+    "category": "hardware",
+    "question_en": "Why is my laptop battery draining so fast?",
+    "question_ar": "ليه بطارية اللاب توب بتخلص بسرعة كدا؟",
+    "answer_en": "Battery drain can be caused by: 1) High screen brightness. 2) Many background apps. 3) Power-hungry processes (like gaming). 4) An aging battery. Try reducing brightness, closing unused apps, and using power-saving mode.",
+    "answer_ar": "استهلاك البطارية السريع ممكن يكون سببه: 1) سطوع الشاشة العالي. 2) برامج كتير شغالة في الخلفية. 3) برامج بتستهلك طاقة عالية (زي الألعاب). 4) بطارية قديمة. جربي تقللي السطوع، وتقفلي البرامج اللي مش بتستخدميها، وتستخدمي وضع توفير الطاقة."
+  },
+  {
+    "category": "software",
+    "question_en": "What is an operating system (OS)?",
+    "question_ar": "إيه هو نظام التشغيل (OS)؟",
+    "answer_en": "An OS is the main software that manages computer hardware and software resources. It provides the interface for you to interact with the computer. Examples: Windows, macOS, Linux, Android, iOS.",
+    "answer_ar": "نظام التشغيل هو البرنامج الأساسي اللي بيدير كل موارد الكمبيوتر (الهاردوير والسوفتوير). وهو اللي بيوفرلك الواجهة اللي بتتعاملي بيها مع الجهاز. أمثلة: ويندوز، ماك، لينكس، أندرويد، iOS."
+  },
+  {
+    "category": "hardware",
+    "question_en": "What is the difference between a 2.4GHz and 5GHz Wi-Fi?",
+    "question_ar": "إيه الفرق بين شبكة الواي فاي 2.4 جيجاهرتز و5 جيجاهرتز؟",
+    "answer_en": "2.4GHz has a longer range but is slower and more prone to interference. 5GHz is faster and has less interference but a shorter range. Use 2.4GHz for devices far from the router, and 5GHz for devices nearby.",
+    "answer_ar": "شبكة 2.4GHz مداها أطول بس أبطأ وأكتر عرضة للتشويش. شبكة 5GHz أسرع وأقل تشويش بس مداها أقصر. استخدمي 2.4 للأجهزة البعيدة عن الراوتر، و5 للأجهزة القريبة."
+  },
+  {
+    "category": "software",
+    "question_en": "What is the cloud?",
+    "question_ar": "إيه هي السحابة (Cloud)؟",
+    "answer_en": "The 'cloud' refers to servers on the internet that store data or run applications. When you save a file to Google Drive or iCloud, it's stored on a remote server, not just your device.",
+    "answer_ar": "السحابة هي سيرفرات على الإنترنت بتخزن البيانات أو بتشغل التطبيقات. لما تحفظي ملف على Google Drive أو iCloud، هو بيتحفظ على سيرفر بعيد، مش بس على جهازك."
+  },
+  {
+    "category": "hardware",
+    "question_en": "What is a CPU?",
+    "question_ar": "إيه هو المعالج (CPU)؟",
+    "answer_en": "The CPU (Central Processing Unit) is the 'brain' of the computer. It executes instructions and performs calculations. A faster CPU (higher clock speed, more cores) means faster overall performance.",
+    "answer_ar": "المعالج (CPU) هو 'عقل' الكمبيوتر. هو المسؤول عن تنفيذ الأوامر وإجراء العمليات الحسابية. كل ما المعالج يبقى أسرع (تردد أعلى، أنوية أكتر)، كل ما الأداء العام يبقى أسرع."
+  },
+  {
+    "category": "software",
+    "question_en": "What is a firewall?",
+    "question_ar": "إيه هو الجدار الناري (Firewall)؟",
+    "answer_en": "A firewall is a security system that monitors and controls incoming and outgoing network traffic. It blocks unauthorized access while allowing legitimate communication.",
+    "answer_ar": "الجدار الناري هو نظام أمان بيراقب ويتحكم في حركة البيانات الداخلة والخارجة من الشبكة. بيمنع الوصول غير المصرح بيه، وفي نفس الوقت بيسمح بالاتصالات الآمنة."
+  },
+  {
+    "category": "hardware",
+    "question_en": "What does 'GHz' mean in a processor?",
+    "question_ar": "إيه معنى 'جيجاهرتز' (GHz) في المعالج؟",
+    "answer_en": "GHz (Gigahertz) measures the clock speed of a processor. It indicates how many cycles per second the CPU can perform. Higher GHz generally means faster processing, but core count also matters.",
+    "answer_ar": "الجيجاهرتز (GHz) بتقيس سرعة الساعة في المعالج. بتشير لعدد الدورات اللي المعالج يقدر ينفذها في الثانية. كل ما الرقم يزيد، كل ما المعالجة تبقى أسرع، بس عدد الأنوية (cores) كمان مهم."
+  },
+  {
+    "category": "software",
+    "question_en": "What is the difference between RAM and storage?",
+    "question_ar": "إيه الفرق بين الرام (RAM) والتخزين (Storage)؟",
+    "answer_en": "RAM is temporary memory used by the CPU while the computer is on. Storage (SSD/HDD) is permanent memory where files are saved even when the computer is off. Think of RAM as a desk and storage as a filing cabinet.",
+    "answer_ar": "الرام هي الذاكرة المؤقتة اللي المعالج بيستخدمها وقت ما الجهاز شغال. التخزين (SSD/HDD) هو الذاكرة الدائمة اللي الملفات بتتحفظ فيها حتى لو الجهاز قفل. تخيلي الرام كأنها مكتب والتخزين كأنه دولاب ملفات."
+  },
+  {
+    "category": "hardware",
+    "question_en": "What is overclocking?",
+    "question_ar": "إيه هو كسر السرعة (Overclocking)؟",
+    "answer_en": "Overclocking is increasing a component's clock speed (like CPU or GPU) beyond factory settings to get more performance. It can cause overheating and void warranties, so it requires good cooling.",
+    "answer_ar": "كسر السرعة هو زيادة سرعة أحد المكونات (زي المعالج أو كارت الشاشة) فوق إعدادات المصنع عشان تحصل على أداء أعلى. ممكن يسبب سخونة زيادة ويلغي الضمان، فمحتاج تبريد كويس."
+  },
+  {
+    "category": "software",
+    "question_en": "What is a driver?",
+    "question_ar": "إيه هو الدرايفر (Driver)؟",
+    "answer_en": "A driver is software that allows the operating system to communicate with a hardware device (like a printer, graphics card, or mouse). Without the correct driver, the hardware won't work properly.",
+    "answer_ar": "الدرايفر هو برنامج بيسمح لنظام التشغيل إنه يتواصل مع جهاز الهاردوير (زي الطابعة، كارت الشاشة، أو الماوس). من غير الدرايفر الصح، الهاردوير مش هيشتغل صح."
+  },
+  {
+    "category": "hardware",
+    "question_en": "What is thermal throttling?",
+    "question_ar": "إيه هو الخفض الحراري (Thermal Throttling)؟",
+    "answer_en": "Thermal throttling is when a CPU or GPU reduces its speed to prevent overheating. It happens when the cooling system can't handle the heat, leading to a drop in performance.",
+    "answer_ar": "الخفض الحراري هو لما المعالج أو كارت الشاشة يقللوا من سرعتهم عشان يمنعوا السخونة الزايدة. ده بيحصل لما نظام التبريد ميقدرش يتعامل مع الحرارة، وبيؤدي لانخفاض في الأداء."
+  },
+  {
+    "category": "software",
+    "question_en": "What is the difference between 32-bit and 64-bit?",
+    "question_ar": "إيه الفرق بين 32-bit و 64-bit؟",
+    "answer_en": "64-bit systems can use more RAM (over 4GB) and process more data per cycle, making them faster and more capable. 32-bit systems are limited to about 4GB of RAM and are mostly outdated.",
+    "answer_ar": "أنظمة 64-bit بتقدر تستخدم رام أكتر (أكتر من 4 جيجا) وتعاين بيانات أكتر في الدورة الواحدة، وده بيخليها أسرع وأقدر. أنظمة 32-bit محدودة بحوالي 4 جيجا رام، وغالبًا بقت قديمة."
+  },
+  {
+    "category": "hardware",
+    "question_en": "How much RAM do I need for gaming?",
+    "question_ar": "قد إيه رام أحتاج للألعاب؟",
+    "answer_en": "For modern gaming, 16GB of RAM is the sweet spot. 8GB is the minimum for older or lighter games, while 32GB is recommended for heavy gaming and multitasking/streaming.",
+    "answer_ar": "للألعاب الحديثة، 16 جيجا رام هي الأنسب. 8 جيجا تعتبر الحد الأدنى للألعاب القديمة أو الخفيفة، بينما 32 جيجا بتُنصح للألعاب الثقيلة أو للبث (Streaming) في نفس الوقت."
+  }
+]
