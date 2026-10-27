@@ -1,142 +1,226 @@
 [
   {
-    "category": "hardware",
-    "question_en": "What is the difference between an SSD and an HDD?",
-    "question_ar": "إيه الفرق بين الـ SSD والـ HDD؟",
-    "answer_en": "An SSD (Solid State Drive) uses flash memory, has no moving parts, and is much faster, quieter, and more durable than an HDD (Hard Disk Drive). An HDD uses spinning disks and is cheaper per GB, making it better for bulk storage.",
-    "answer_ar": "الـ SSD (Solid State Drive) بيستخدم ذاكرة فلاش، ومفيهوش أجزاء متحركة، وده بيخليه أسرع بكتير وأهدى وأكثر متانة من الـ HDD (Hard Disk Drive). الـ HDD بيستخدم أقراص بتلف وده بيخليه أرخص في المساحة، فبيبقى أفضل لتخزين الملفات الكبيرة."
+    "category": "laptops",
+    "question_en": "What is the best laptop for programming?",
+    "question_ar": "إيه أفضل لاب توب للبرمجة؟",
+    "answer_en": "For programming, prioritize RAM (16GB+), a good keyboard, and an SSD. The MacBook Air M2/M3 or a Windows laptop with an i7/Ryzen 7 and 16GB RAM are excellent choices.",
+    "answer_ar": "للبرمجة، ركزي على الرام (16 جيجا أو أكتر)، كيبورد مريح، وهارد SSD. الـ MacBook Air M2/M3 أو لاب ويندوز بمعالج i7/Ryzen 7 و16 جيجا رام اختيارات ممتازة."
   },
   {
-    "category": "hardware",
-    "question_en": "What is RAM and why is it important?",
-    "question_ar": "إيه هي الرام (RAM) وليه هي مهمة؟",
-    "answer_en": "RAM (Random Access Memory) is the short-term memory of your computer. It temporarily stores data that the CPU needs to access quickly. More RAM means you can run more applications at the same time without slowing down.",
-    "answer_ar": "الرام (RAM) هي الذاكرة قصيرة المدى للكمبيوتر. بتخزن البيانات مؤقتًا عشان المعالج (CPU) يوصلها بسرعة. كل ما الرام تزيد، كل ما تقدري تفتحي برامج أكتر في نفس الوقت من غير ما الجهاز يعلق."
+    "category": "laptops",
+    "question_en": "What is the difference between a gaming laptop and a normal laptop?",
+    "question_ar": "إيه الفرق بين لاب الجيمنج واللاب العادي؟",
+    "answer_en": "Gaming laptops have dedicated GPUs, better cooling, and higher refresh rate screens. They are heavier and have shorter battery life compared to normal laptops.",
+    "answer_ar": "لابات الجيمنج فيها كارت شاشة مخصص، تبريد أفضل، وشاشات بمعدل تحديث أعلى. بس هي أتقل وبطاريتها أقل من اللابات العادية."
+  },
+  {
+    "category": "laptops",
+    "question_en": "How much storage do I need in a laptop?",
+    "question_ar": "كام مساحة تخزين أحتاج في اللاب؟",
+    "answer_en": "For basic use, 256GB SSD is enough. For programming or media, 512GB is recommended. For gaming or heavy video editing, 1TB or more is ideal.",
+    "answer_ar": "للاستخدام الأساسي، 256 جيجا SSD كفاية. للبرمجة أو الميديا، 512 جيجا أفضل. للألعاب أو المونتاج الثقيل، 1 تيرا أو أكتر مثالي."
+  },
+  {
+    "category": "laptops",
+    "question_en": "Is 8GB RAM enough for a laptop?",
+    "question_ar": "هل 8 جيجا رام كفاية للاب توب؟",
+    "answer_en": "8GB is the bare minimum for basic tasks like browsing and Word. For smooth multitasking, programming, or gaming, 16GB is highly recommended.",
+    "answer_ar": "8 جيجا هي الحد الأدنى للمهام الأساسية زي التصفح والوورد. للاستخدام المتعدد السلس أو البرمجة أو الألعاب، 16 جيجا موصى بيها بشدة."
+  },
+  {
+    "category": "laptops",
+    "question_en": "What is the difference between MacBook Air and MacBook Pro?",
+    "question_ar": "إيه الفرق بين MacBook Air و MacBook Pro؟",
+    "answer_en": "MacBook Air is thinner, lighter, and fanless (silent), great for everyday use. MacBook Pro has active cooling, better sustained performance, and a better display for professionals.",
+    "answer_ar": "MacBook Air أرفع وأخف ومفيهوش مروحة (صامت)، ممتاز للاستخدام اليومي. MacBook Pro فيه تبريد نشط وأداء أفضل مستمر وشاشة أحسن للمحترفين."
+  },
+  {
+    "category": "phones",
+    "question_en": "What is the difference between iOS and Android?",
+    "question_ar": "إيه الفرق بين iOS و Android؟",
+    "answer_en": "iOS is exclusive to Apple iPhones, known for its smooth performance and privacy. Android is open-source and available on many brands, offering more customization and variety.",
+    "answer_ar": "iOS مخصص لآيفون بس، ومعروف بسلاسة أدائه وخصوصيته. أندرويد مفتوح المصدر ومتوفر على ماركات كتير، وبيوفر حرية تخصيص وتنوع أكبر."
+  },
+  {
+    "category": "phones",
+    "question_en": "How long does a phone battery usually last?",
+    "question_ar": "بطارية الموبايل بتعيش قد إيه عادة؟",
+    "answer_en": "A phone battery typically lasts 2-3 years before losing significant capacity. To extend its life, avoid charging to 100% constantly and keep it away from extreme heat.",
+    "answer_ar": "بطارية الموبايل عادة بتعيش 2-3 سنين قبل ما تفقد جزء كبير من كفاءتها. عشان تطولي عمرها، تجنبي الشحن لـ 100% باستمرار وبعديها عن الحرارة العالية."
+  },
+  {
+    "category": "phones",
+    "question_en": "Is it safe to use my phone while charging?",
+    "question_ar": "هل آمن إني أستخدم الموبايل وهو بيشحن؟",
+    "answer_en": "Generally, yes, it's safe with modern phones. However, it can cause overheating and slow down charging. Avoid heavy gaming while charging.",
+    "answer_ar": "عمومًا، أيوه آمن مع الموبايلات الحديثة. بس ممكن يسبب سخونة ويبطأ الشحن. تجنبي الألعاب الثقيلة وقت الشحن."
+  },
+  {
+    "category": "phones",
+    "question_en": "What is a refresh rate in a phone screen?",
+    "question_ar": "إيه هو معدل تحديث الشاشة (Refresh Rate)؟",
+    "answer_en": "Refresh rate (Hz) is how many times per second the screen updates. A 120Hz screen feels smoother than 60Hz, especially when scrolling or gaming.",
+    "answer_ar": "معدل التحديث (بالهرتز) هو عدد مرات تحديث الشاشة في الثانية. شاشة 120 هرتز بتبقى أنعم من 60 هرتز، خصوصًا في التصفح أو الألعاب."
   },
   {
     "category": "software",
     "question_en": "What is the difference between Windows and macOS?",
     "question_ar": "إيه الفرق بين ويندوز (Windows) وماك (macOS)؟",
-    "answer_en": "Windows is used on a wide variety of hardware and is great for gaming and compatibility. macOS is exclusive to Apple devices, known for its stability, integration with the Apple ecosystem, and user-friendly interface, making it great for creative work.",
-    "answer_ar": "ويندوز بيشتغل على أجهزة كتير مختلفة وممتاز في الألعاب والتوافق مع البرامج. ماك (macOS) مخصص لأجهزة آبل بس، ومعروف بثباته وتكامله مع أجهزة آبل وبساطة واجهته، وده بيخليه ممتاز للشغل الإبداعي."
-  },
-  {
-    "category": "hardware",
-    "question_en": "What is a GPU and do I need a dedicated one?",
-    "question_ar": "إيه هي كارت الشاشة (GPU) وهل أحتاج واحد مخصص؟",
-    "answer_en": "A GPU (Graphics Processing Unit) handles rendering images and video. You need a dedicated GPU if you play modern games, do video editing, 3D rendering, or train AI models. For basic tasks, an integrated GPU is enough.",
-    "answer_ar": "كارت الشاشة (GPU) هو المسؤول عن معالجة الصور والفيديو. إنتِ محتاجة كارت شاشة مخصص لو بتلعبي ألعاب حديثة، أو بتعملي مونتاج فيديو، أو تصميم 3D، أو تدريبي موديلات ذكاء اصطناعي. لكن للمهام البسيطة، كارت الشاشة المدمج كفاية."
-  },
-  {
-    "category": "software",
-    "question_en": "How can I speed up my slow computer?",
-    "question_ar": "إزاي أسرّع الكمبيوتر البطيء بتاعي؟",
-    "answer_en": "Try these steps: 1) Uninstall unused programs. 2) Upgrade to an SSD if you haven't. 3) Increase your RAM. 4) Clean temporary files. 5) Disable startup programs. 6) Check for malware.",
-    "answer_ar": "جربي الخطوات دي: 1) امسحي البرامج اللي مش بتستخدميها. 2) ركبي هارد SSD لو لسه عندك HDD. 3) زودي الرام. 4) امسحي الملفات المؤقتة. 5) وقفي البرامج اللي بتفتح مع التشغيل. 6) اعملي فحص للفيروسات."
-  },
-  {
-    "category": "hardware",
-    "question_en": "What is the difference between Intel Core i5 and i7?",
-    "question_ar": "إيه الفرق بين معالج Intel Core i5 و i7؟",
-    "answer_en": "An i7 generally has more cores/threads and higher cache than an i5, making it better for heavy multitasking, gaming, and professional software. An i5 is enough for everyday tasks and moderate gaming.",
-    "answer_ar": "معالج i7 بيبقى فيه أنوية (cores) وخيوط (threads) وكاش أكبر من الـ i5، وده بيخليه أفضل في المهام الثقيلة والألعاب والبرامج الاحترافية. أما i5 فكفاية للمهام اليومية والألعاب المتوسطة."
+    "answer_en": "Windows is used on a wide variety of hardware and is great for gaming and compatibility. macOS is exclusive to Apple devices, known for its stability and user-friendly interface, making it great for creative work.",
+    "answer_ar": "ويندوز بيشتغل على أجهزة كتير مختلفة وممتاز في الألعاب والتوافق مع البرامج. ماك مخصص لأجهزة آبل بس، ومعروف بثباته وبساطة واجهته، وده بيخليه ممتاز للشغل الإبداعي."
   },
   {
     "category": "software",
     "question_en": "What is a virtual machine (VM)?",
     "question_ar": "إيه هي الآلة الافتراضية (VM)؟",
-    "answer_en": "A Virtual Machine is a software emulation of a physical computer. It runs an operating system (like Windows or Linux) inside a window on your main OS. It's useful for testing, running different OSs, or isolating software.",
-    "answer_ar": "الآلة الافتراضية (VM) هي نظام كمبيوتر وهمي بيشتغل كبرنامج. بتقدر تشغلي نظام تشغيل كامل (زي ويندوز أو لينكس) جوة نافذة على النظام الأساسي بتاعك. مفيدة للتجارب، أو تشغيل أنظمة تانية، أو عزل البرامج المشبوهة."
-  },
-  {
-    "category": "hardware",
-    "question_en": "Why is my laptop battery draining so fast?",
-    "question_ar": "ليه بطارية اللاب توب بتخلص بسرعة كدا؟",
-    "answer_en": "Battery drain can be caused by: 1) High screen brightness. 2) Many background apps. 3) Power-hungry processes (like gaming). 4) An aging battery. Try reducing brightness, closing unused apps, and using power-saving mode.",
-    "answer_ar": "استهلاك البطارية السريع ممكن يكون سببه: 1) سطوع الشاشة العالي. 2) برامج كتير شغالة في الخلفية. 3) برامج بتستهلك طاقة عالية (زي الألعاب). 4) بطارية قديمة. جربي تقللي السطوع، وتقفلي البرامج اللي مش بتستخدميها، وتستخدمي وضع توفير الطاقة."
+    "answer_en": "A Virtual Machine is a software emulation of a physical computer. It runs an operating system inside a window on your main OS. It's useful for testing or isolating software.",
+    "answer_ar": "الآلة الافتراضية هي نظام كمبيوتر وهمي بيشتغل كبرنامج. بتقدر تشغلي نظام تشغيل كامل جوة نافذة على النظام الأساسي بتاعك. مفيدة للتجارب أو عزل البرامج."
   },
   {
     "category": "software",
-    "question_en": "What is an operating system (OS)?",
-    "question_ar": "إيه هو نظام التشغيل (OS)؟",
-    "answer_en": "An OS is the main software that manages computer hardware and software resources. It provides the interface for you to interact with the computer. Examples: Windows, macOS, Linux, Android, iOS.",
-    "answer_ar": "نظام التشغيل هو البرنامج الأساسي اللي بيدير كل موارد الكمبيوتر (الهاردوير والسوفتوير). وهو اللي بيوفرلك الواجهة اللي بتتعاملي بيها مع الجهاز. أمثلة: ويندوز، ماك، لينكس، أندرويد، iOS."
-  },
-  {
-    "category": "hardware",
-    "question_en": "What is the difference between a 2.4GHz and 5GHz Wi-Fi?",
-    "question_ar": "إيه الفرق بين شبكة الواي فاي 2.4 جيجاهرتز و5 جيجاهرتز؟",
-    "answer_en": "2.4GHz has a longer range but is slower and more prone to interference. 5GHz is faster and has less interference but a shorter range. Use 2.4GHz for devices far from the router, and 5GHz for devices nearby.",
-    "answer_ar": "شبكة 2.4GHz مداها أطول بس أبطأ وأكتر عرضة للتشويش. شبكة 5GHz أسرع وأقل تشويش بس مداها أقصر. استخدمي 2.4 للأجهزة البعيدة عن الراوتر، و5 للأجهزة القريبة."
+    "question_en": "How can I speed up my slow computer?",
+    "question_ar": "إزاي أسرّع الكمبيوتر البطيء بتاعي؟",
+    "answer_en": "Try these steps: 1) Uninstall unused programs. 2) Upgrade to an SSD. 3) Increase your RAM. 4) Clean temporary files. 5) Disable startup programs. 6) Check for malware.",
+    "answer_ar": "جربي الخطوات دي: 1) امسحي البرامج اللي مش بتستخدميها. 2) ركبي هارد SSD. 3) زودي الرام. 4) امسحي الملفات المؤقتة. 5) وقفي البرامج اللي بتفتح مع التشغيل. 6) اعملي فحص للفيروسات."
   },
   {
     "category": "software",
     "question_en": "What is the cloud?",
     "question_ar": "إيه هي السحابة (Cloud)؟",
-    "answer_en": "The 'cloud' refers to servers on the internet that store data or run applications. When you save a file to Google Drive or iCloud, it's stored on a remote server, not just your device.",
-    "answer_ar": "السحابة هي سيرفرات على الإنترنت بتخزن البيانات أو بتشغل التطبيقات. لما تحفظي ملف على Google Drive أو iCloud، هو بيتحفظ على سيرفر بعيد، مش بس على جهازك."
-  },
-  {
-    "category": "hardware",
-    "question_en": "What is a CPU?",
-    "question_ar": "إيه هو المعالج (CPU)؟",
-    "answer_en": "The CPU (Central Processing Unit) is the 'brain' of the computer. It executes instructions and performs calculations. A faster CPU (higher clock speed, more cores) means faster overall performance.",
-    "answer_ar": "المعالج (CPU) هو 'عقل' الكمبيوتر. هو المسؤول عن تنفيذ الأوامر وإجراء العمليات الحسابية. كل ما المعالج يبقى أسرع (تردد أعلى، أنوية أكتر)، كل ما الأداء العام يبقى أسرع."
+    "answer_en": "The 'cloud' refers to servers on the internet that store data or run applications. When you save a file to Google Drive, it's stored on a remote server.",
+    "answer_ar": "السحابة هي سيرفرات على الإنترنت بتخزن البيانات أو بتشغل التطبيقات. لما تحفظي ملف على Google Drive، هو بيتحفظ على سيرفر بعيد."
   },
   {
     "category": "software",
     "question_en": "What is a firewall?",
     "question_ar": "إيه هو الجدار الناري (Firewall)؟",
-    "answer_en": "A firewall is a security system that monitors and controls incoming and outgoing network traffic. It blocks unauthorized access while allowing legitimate communication.",
-    "answer_ar": "الجدار الناري هو نظام أمان بيراقب ويتحكم في حركة البيانات الداخلة والخارجة من الشبكة. بيمنع الوصول غير المصرح بيه، وفي نفس الوقت بيسمح بالاتصالات الآمنة."
+    "answer_en": "A firewall is a security system that monitors and controls network traffic. It blocks unauthorized access while allowing legitimate communication.",
+    "answer_ar": "الجدار الناري هو نظام أمان بيراقب ويتحكم في حركة البيانات. بيمنع الوصول غير المصرح بيه، وفي نفس الوقت بيسمح بالاتصالات الآمنة."
+  },
+  {
+    "category": "hardware",
+    "question_en": "What is the difference between an SSD and an HDD?",
+    "question_ar": "إيه الفرق بين الـ SSD والـ HDD؟",
+    "answer_en": "An SSD uses flash memory, has no moving parts, and is much faster and more durable than an HDD. An HDD uses spinning disks and is cheaper per GB, making it better for bulk storage.",
+    "answer_ar": "الـ SSD بيستخدم ذاكرة فلاش، ومفيهوش أجزاء متحركة، وده بيخليه أسرع وأكثر متانة من الـ HDD. الـ HDD بيستخدم أقراص بتلف وده بيخليه أرخص في المساحة."
+  },
+  {
+    "category": "hardware",
+    "question_en": "What is RAM and why is it important?",
+    "question_ar": "إيه هي الرام (RAM) وليه هي مهمة؟",
+    "answer_en": "RAM is the short-term memory of your computer. It temporarily stores data that the CPU needs to access quickly. More RAM means you can run more applications at the same time.",
+    "answer_ar": "الرام هي الذاكرة قصيرة المدى للكمبيوتر. بتخزن البيانات مؤقتًا عشان المعالج يوصلها بسرعة. كل ما الرام تزيد، كل ما تقدري تفتحي برامج أكتر."
+  },
+  {
+    "category": "hardware",
+    "question_en": "What is a GPU and do I need a dedicated one?",
+    "question_ar": "إيه هي كارت الشاشة (GPU) وهل أحتاج واحد مخصص؟",
+    "answer_en": "A GPU handles rendering images and video. You need a dedicated GPU if you play modern games, do video editing, 3D rendering, or train AI models. For basic tasks, an integrated GPU is enough.",
+    "answer_ar": "كارت الشاشة هو المسؤول عن معالجة الصور والفيديو. محتاجة كارت مخصص لو بتلعبي ألعاب حديثة، أو بتعملي مونتاج، أو تصميم 3D. للمهام البسيطة، المدمج كفاية."
   },
   {
     "category": "hardware",
     "question_en": "What does 'GHz' mean in a processor?",
     "question_ar": "إيه معنى 'جيجاهرتز' (GHz) في المعالج؟",
-    "answer_en": "GHz (Gigahertz) measures the clock speed of a processor. It indicates how many cycles per second the CPU can perform. Higher GHz generally means faster processing, but core count also matters.",
-    "answer_ar": "الجيجاهرتز (GHz) بتقيس سرعة الساعة في المعالج. بتشير لعدد الدورات اللي المعالج يقدر ينفذها في الثانية. كل ما الرقم يزيد، كل ما المعالجة تبقى أسرع، بس عدد الأنوية (cores) كمان مهم."
-  },
-  {
-    "category": "software",
-    "question_en": "What is the difference between RAM and storage?",
-    "question_ar": "إيه الفرق بين الرام (RAM) والتخزين (Storage)؟",
-    "answer_en": "RAM is temporary memory used by the CPU while the computer is on. Storage (SSD/HDD) is permanent memory where files are saved even when the computer is off. Think of RAM as a desk and storage as a filing cabinet.",
-    "answer_ar": "الرام هي الذاكرة المؤقتة اللي المعالج بيستخدمها وقت ما الجهاز شغال. التخزين (SSD/HDD) هو الذاكرة الدائمة اللي الملفات بتتحفظ فيها حتى لو الجهاز قفل. تخيلي الرام كأنها مكتب والتخزين كأنه دولاب ملفات."
-  },
-  {
-    "category": "hardware",
-    "question_en": "What is overclocking?",
-    "question_ar": "إيه هو كسر السرعة (Overclocking)؟",
-    "answer_en": "Overclocking is increasing a component's clock speed (like CPU or GPU) beyond factory settings to get more performance. It can cause overheating and void warranties, so it requires good cooling.",
-    "answer_ar": "كسر السرعة هو زيادة سرعة أحد المكونات (زي المعالج أو كارت الشاشة) فوق إعدادات المصنع عشان تحصل على أداء أعلى. ممكن يسبب سخونة زيادة ويلغي الضمان، فمحتاج تبريد كويس."
-  },
-  {
-    "category": "software",
-    "question_en": "What is a driver?",
-    "question_ar": "إيه هو الدرايفر (Driver)؟",
-    "answer_en": "A driver is software that allows the operating system to communicate with a hardware device (like a printer, graphics card, or mouse). Without the correct driver, the hardware won't work properly.",
-    "answer_ar": "الدرايفر هو برنامج بيسمح لنظام التشغيل إنه يتواصل مع جهاز الهاردوير (زي الطابعة، كارت الشاشة، أو الماوس). من غير الدرايفر الصح، الهاردوير مش هيشتغل صح."
-  },
-  {
-    "category": "hardware",
-    "question_en": "What is thermal throttling?",
-    "question_ar": "إيه هو الخفض الحراري (Thermal Throttling)؟",
-    "answer_en": "Thermal throttling is when a CPU or GPU reduces its speed to prevent overheating. It happens when the cooling system can't handle the heat, leading to a drop in performance.",
-    "answer_ar": "الخفض الحراري هو لما المعالج أو كارت الشاشة يقللوا من سرعتهم عشان يمنعوا السخونة الزايدة. ده بيحصل لما نظام التبريد ميقدرش يتعامل مع الحرارة، وبيؤدي لانخفاض في الأداء."
-  },
-  {
-    "category": "software",
-    "question_en": "What is the difference between 32-bit and 64-bit?",
-    "question_ar": "إيه الفرق بين 32-bit و 64-bit؟",
-    "answer_en": "64-bit systems can use more RAM (over 4GB) and process more data per cycle, making them faster and more capable. 32-bit systems are limited to about 4GB of RAM and are mostly outdated.",
-    "answer_ar": "أنظمة 64-bit بتقدر تستخدم رام أكتر (أكتر من 4 جيجا) وتعاين بيانات أكتر في الدورة الواحدة، وده بيخليها أسرع وأقدر. أنظمة 32-bit محدودة بحوالي 4 جيجا رام، وغالبًا بقت قديمة."
+    "answer_en": "GHz measures the clock speed of a processor. It indicates how many cycles per second the CPU can perform. Higher GHz means faster processing.",
+    "answer_ar": "الجيجاهرتز بتقيس سرعة الساعة في المعالج. بتشير لعدد الدورات اللي المعالج يقدر ينفذها في الثانية. كل ما الرقم يزيد، كل ما المعالجة تبقى أسرع."
   },
   {
     "category": "hardware",
     "question_en": "How much RAM do I need for gaming?",
     "question_ar": "قد إيه رام أحتاج للألعاب؟",
-    "answer_en": "For modern gaming, 16GB of RAM is the sweet spot. 8GB is the minimum for older or lighter games, while 32GB is recommended for heavy gaming and multitasking/streaming.",
-    "answer_ar": "للألعاب الحديثة، 16 جيجا رام هي الأنسب. 8 جيجا تعتبر الحد الأدنى للألعاب القديمة أو الخفيفة، بينما 32 جيجا بتُنصح للألعاب الثقيلة أو للبث (Streaming) في نفس الوقت."
+    "answer_en": "For modern gaming, 16GB of RAM is the sweet spot. 8GB is the minimum for older games, while 32GB is recommended for heavy gaming and streaming.",
+    "answer_ar": "للألعاب الحديثة، 16 جيجا رام هي الأنسب. 8 جيجا الحد الأدنى للألعاب القديمة، بينما 32 جيجا بتُنصح للألعاب الثقيلة والبث."
+  },
+  {
+    "category": "hardware",
+    "question_en": "What is the difference between a 2.4GHz and 5GHz Wi-Fi?",
+    "question_ar": "إيه الفرق بين شبكة الواي فاي 2.4 و5 جيجاهرتز؟",
+    "answer_en": "2.4GHz has a longer range but is slower. 5GHz is faster and has less interference but a shorter range. Use 2.4GHz for devices far from the router, and 5GHz for nearby devices.",
+    "answer_ar": "شبكة 2.4GHz مداها أطول بس أبطأ. شبكة 5GHz أسرع وأقل تشويش بس مداها أقصر. استخدمي 2.4 للأجهزة البعيدة و5 للقريبة."
+  },
+  {
+    "category": "hardware",
+    "question_en": "What is the best processor for gaming?",
+    "question_ar": "إيه أفضل معالج للألعاب؟",
+    "answer_en": "For gaming, AMD Ryzen 7 (like 7800X3D) is excellent. Intel Core i5-13600K or i7-14700K are also great. Pair with a strong GPU like RTX 4070 or higher.",
+    "answer_ar": "للألعاب، AMD Ryzen 7 (زي 7800X3D) ممتاز. Intel Core i5-13600K أو i7-14700K كمان كويسين جدًا. لازم كارت شاشة قوي زي RTX 4070 أو أعلى."
+  },
+  {
+    "category": "general",
+    "question_en": "How often should I clean my laptop?",
+    "question_ar": "كل قد إيه أنضف اللاب؟",
+    "answer_en": "Clean the outside weekly with a soft cloth. Clean the keyboard and vents monthly. Open it for a deep clean (dust removal) every 6-12 months.",
+    "answer_ar": "نضفي السطح الخارجي أسبوعيًا بقماشة ناعمة. الكيبورد والفتحات شهريًا. افتحيه لتنضيف عميق (إزالة التراب) كل 6-12 شهر."
+  },
+  {
+    "category": "general",
+    "question_en": "What is the best way to back up my data?",
+    "question_ar": "إيه أفضل طريقة لأخذ نسخة احتياطية من بياناتي؟",
+    "answer_en": "The 3-2-1 rule: 3 copies of data, on 2 different media, with 1 copy off-site (cloud). Use an external hard drive and a cloud service like Google Drive.",
+    "answer_ar": "قاعدة 3-2-1: 3 نسخ من البيانات، على وسيطين مختلفين، ونسخة واحدة خارج المكان (سحابة). استخدمي هارد خارجي وخدمة سحابية زي Google Drive."
+  },
+  {
+    "category": "general",
+    "question_en": "How do I choose between a laptop and a desktop?",
+    "question_ar": "إزاي أختار بين لاب توب وكمبيوتر مكتبي؟",
+    "answer_en": "Choose a laptop if you need portability. Choose a desktop if you need maximum performance for gaming/editing at a fixed place, and it's cheaper to upgrade.",
+    "answer_ar": "اختاري لاب توب لو محتاجة تنقلي وبتشتغلي وانتِ برة. اختاري ديسكتوب لو عايزة أقصى أداء للألعاب/المونتاج في مكان ثابت، وأرخص في الترقية."
+  },
+  {
+    "category": "general",
+    "question_en": "Should I buy a flagship phone or a mid-range one?",
+    "question_ar": "أشتري موبايل فلاجشيب ولا متوسط؟",
+    "answer_en": "If you want the best camera, performance, and updates, go flagship. If you only use basic apps, a mid-range phone offers great value for money.",
+    "answer_ar": "لو عايزة أفضل كاميرا وأداء وتحديثات، اشتري فلاجشيب. لو بتستخدمي التطبيقات الأساسية بس، الموبايل المتوسط بيوفر قيمة ممتازة مقابل السعر."
+  },
+  {
+    "category": "software",
+    "question_en": "What is Linux and should I use it?",
+    "question_ar": "إيه هو لينكس وهل أستخدمه؟",
+    "answer_en": "Linux is a free, open-source operating system. It's great for programming, servers, and reviving old computers. It has a learning curve but is very powerful.",
+    "answer_ar": "لينكس هو نظام تشغيل مجاني ومفتوح المصدر. ممتاز للبرمجة والسيرفرات وإحياء الأجهزة القديمة. محتاج تعلم شوية بس قوي جدًا."
+  },
+  {
+    "category": "software",
+    "question_en": "How do I remove a virus from my computer?",
+    "question_ar": "إزاي أشيل فيروس من الكمبيوتر؟",
+    "answer_en": "1) Disconnect from internet. 2) Run a full antivirus scan (Windows Defender or Malwarebytes). 3) Remove detected threats. 4) Update your OS. 5) Change passwords.",
+    "answer_ar": "1) افصلي النت. 2) شغلي فحص كامل للفيروسات (Windows Defender أو Malwarebytes). 3) امسحي التهديدات. 4) حدثي النظام. 5) غيري الباسوردات."
+  },
+  {
+    "category": "software",
+    "question_en": "What is a VPN used for?",
+    "question_ar": "إيه استخدام الـ VPN؟",
+    "answer_en": "A VPN encrypts your internet connection, hides your IP, and secures your data on public Wi-Fi. It's also used to access geo-restricted content.",
+    "answer_ar": "الـ VPN بيشفر اتصالك بالإنترنت، ويخفي الـ IP بتاعك، وبيأمن بياناتك على شبكات الواي فاي العامة. بيُستخدم كمان للوصول لمحتوى محجوب جغرافيًا."
+  },
+  {
+    "category": "laptops",
+    "question_en": "What is the best laptop for students?",
+    "question_ar": "إيه أفضل لاب توب للطلبة؟",
+    "answer_en": "A student laptop should be lightweight, have good battery life, and cost-effective. The Acer Aspire 5, Lenovo IdeaPad 3, or MacBook Air M1 (if budget allows) are great choices.",
+    "answer_ar": "لاب الطالب لازم يكون خفيف، بطاريته كويسة، وسعره معقول. Acer Aspire 5، Lenovo IdeaPad 3، أو MacBook Air M1 (لو الميزانية تسمح) اختيارات ممتازة."
+  },
+  {
+    "category": "phones",
+    "question_en": "What is the best budget phone?",
+    "question_ar": "إيه أفضل موبايل اقتصادي؟",
+    "answer_en": "For budget phones, look at the Redmi Note series, Poco X series, or Samsung Galaxy A series. They offer great specs for the price.",
+    "answer_ar": "للموبايلات الاقتصادية، بصي على سلسلة Redmi Note، أو Poco X، أو Samsung Galaxy A. دول بيوفروا مواصفات ممتازة مقابل السعر."
+  },
+  {
+    "category": "software",
+    "question_en": "What is the best free video editor?",
+    "question_ar": "إيه أفضل برنامج مونتاج مجاني؟",
+    "answer_en": "DaVinci Resolve is the most powerful free editor. CapCut is great for quick social media videos. Shotcut is a simple open-source option.",
+    "answer_ar": "DaVinci Resolve هو أقوى برنامج مونتاج مجاني. CapCut ممتاز لفيديوهات السوشيال ميديا السريعة. Shotcut خيار بسيط ومفتوح المصدر."
+  },
+  {
+    "category": "software",
+    "question_en": "What is the best free photo editor?",
+    "question_ar": "إيه أفضل برنامج تعديل صور مجاني؟",
+    "answer_en": "GIMP is the most powerful free alternative to Photoshop. Photopea runs in the browser and looks like Photoshop. Canva is great for simple designs.",
+    "answer_ar": "GIMP هو أقوى بديل مجاني للفوتوشوب. Photopea بيشتغل في المتصفح وشكله زي الفوتوشوب. Canva ممتاز للتصاميم البسيطة."
   }
 ]
